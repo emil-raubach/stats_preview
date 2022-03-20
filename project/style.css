@@ -21,7 +21,7 @@ main {
 header {
     font-family: 'Inter', sans-serif;
     color: #fff;
-    text-align: center;
+    /* text-align: center; */
     grid-row: 2 / 3;
     grid-column: 2 / 3;
 }
@@ -33,10 +33,10 @@ header h1 span {
 
 /* Card Text */
 .card__text {
-    color: #fff;
+    color: hsla(0, 0%, 100%, 0.75);
     grid-row: 4 / 5;
     grid-column: 2 / 3;
-    align-self: center;
+    /* align-self: center; */
     /* justify-self: center; */
     text-align: left;
 }
@@ -46,13 +46,15 @@ header h1 span {
     justify-content: space-between;
     grid-row: 6 / 7;
     grid-column: 2 / 3;
-    align-items: center;
+    /* align-items: center; */
+    height: 100%;
 }
 
-.flex-items div p {
-    font-family: 'Lexend Deca';
-    font-weight: 700;
-    font-size: 1.5rem;
+.stats {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 32px;
+    color: hsl(0, 0%, 100%);
 }
 
 .flex-items div:last-child p:first-child{
@@ -60,16 +62,16 @@ header h1 span {
 }
 
 /* Need to figure out the correct way to select */
-.flex-items div p + p {
+.stats-text {
     font-variant: small-caps;
     font-family: 'Lexend Deca', sans-serif;
-    /* font-size: 16px; */
-    color: #f4f4f4;
+    font-size: 1.2rem;
+    color: hsla(0, 0%, 100%, 0.6);
 }
 
 .container {
     max-width: 1440px;
-    height: 446x;
+    max-height: 100%;  
     margin: 100px auto;
     /* padding: 20px; */
     display: grid;
@@ -77,30 +79,64 @@ header h1 span {
     border-radius: 10px;
 }
 
+.card {
+    height: auto;
+}
+
 .card__flex-items {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
     color: #fff;
 }
 
 .card__flex-items-column-left {
     display: grid;
-    grid-template-rows: 30px 100px 20px 100px 30px 166px;
-    grid-template-columns: 100px 340px 100px;
+    grid-template-rows: 50px 100px 20px 100px 70px 126px;
+    grid-template-columns: minmax(0, 70px) 370px 100px;
     max-width: 540px;
 }
 
 /* Image */
-/* Or is it better to use the image as the background? */
 .card__flex-items-column-right {
     background-color: hsl(277, 64%, 61%);
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: auto;
 }
 
 .card__flex-items-column-right img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
     margin: 0;
     padding: 0;
     opacity: 0.6;
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+@media all and (max-width:  1080px) {
+    .card__flex-items {
+        flex-direction: column;
+    }
+    
+    .card__flex-items-column-right {
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        flex: 100%;
+    }
+    
+    .card__flex-items-column-right img {
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        flex: 100%;
+        height: 100%;
+        width: 100%;
+        /* object-fit: fill; */
+    }
+    
 }
